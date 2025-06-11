@@ -46,7 +46,7 @@
 .calc-numbers {
   width: 100%;
 }
-.row-1, .row-2, .row-3 {
+.row-1, .row-2, .row-3, .row-4 {
   display: flex;
 }
 .Button-item {
@@ -95,4 +95,18 @@ input::-webkit-inner-spin-button {
   margin-left: -3rem;
   color: #979797;
   margin-top: 1rem;
+}
+
+.Visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

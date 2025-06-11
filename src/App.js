@@ -2,25 +2,29 @@ import './App.css';
 import React, { useState } from "react";
 
 function Calculator() {
-    const [result, setResult] = useState(""); // Объявляем состояние "result"
+    const [result, setResult] = useState("");
+    const [ariaMessage, setAriaMessage] = React.useState("")
 
     const handleClick = (value) => {
-        // Определяем функцию "handleClick"
         if (value === "=") {
             try {
                 const evalResult = eval(result);
                 setResult(String(evalResult));
+                setAriaMessage(`Результат равен ${evalResult}`)
             } catch (error) {
                 setResult("Ошибка")
+                setAriaMessage(`Ошибка в выражении`)
             }
         }
         else {
             setResult(prevResult => prevResult + value);
+            setAriaMessage("")
         }
     };
 
     return (
         <div className="App">
+            <h1 className="Visually-hidden">Калькулятор</h1>
             <div className="Result">
                 <input
                     className="Result-input"
@@ -42,7 +46,7 @@ function Calculator() {
                     <button className="Button-item" onClick={() => handleClick("9")}>
                         9
                     </button>
-                    <button className="Button-item" onClick={() => handleClick("*")}>
+                    <button className="Button-item" aria-label="Умножить" onClick={() => handleClick("*")}>
                         x
                     </button>
                 </div>
@@ -56,7 +60,7 @@ function Calculator() {
                     <button className="Button-item" onClick={() => handleClick("6")}>
                         6
                     </button>
-                    <button className="Button-item" onClick={() => handleClick("-")}>
+                    <button className="Button-item" aria-label="Вычесть" onClick={() => handleClick("-")}>
                         -
                     </button>
                 </div>
@@ -70,24 +74,27 @@ function Calculator() {
                     <button className="Button-item" onClick={() => handleClick("3")}>
                         3
                     </button>
-                    <button className="Button-item" onClick={() => handleClick("+")}>
+                    <button className="Button-item" aria-label="Прибавить" onClick={() => handleClick("+")}>
                         +
                     </button>
                 </div>
-                <div className="row-3">
-                    <button className="Button-item" onClick={() => handleClick("-")}>
+                <div className="row-4">
+                    <button className="Button-item" aria-label="Минус" onClick={() => handleClick("-")}>
                         +/-
                     </button>
                     <button className="Button-item" onClick={() => handleClick("0")}>
                         0
                     </button>
-                    <button className="Button-item" onClick={() => handleClick("/")}>
+                    <button className="Button-item" aria-label="Разделить" onClick={() => handleClick("/")}>
                         /
                     </button>
-                    <button className="Button-item" onClick={() => handleClick("=")}>
+                    <button className="Button-item" aria-label="Равно" onClick={() => handleClick("=")}>
                         =
                     </button>
                 </div>
+            </div>
+            <div aria-live="assertive" class="Visually-hidden">
+                {ariaMessage}
             </div>
         </div>
     );
