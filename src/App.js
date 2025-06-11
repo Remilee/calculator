@@ -26,17 +26,16 @@ function Calculator() {
         <div className="App">
             <h1 className="Visually-hidden">Калькулятор</h1>
             <div className="Result">
-                <input
-                    className="Result-input"
-                    id="result"
-                    value={result}
-                    readOnly
-                />
-                <button className="Button-clear" onClick={() => setResult("")} aria-label="Очистить">C</button>
+                <input className="Result-input" id="result" value={result} readOnly />
+                <button className="Button-clear" onClick={() => setResult("")} aria-label="Очистить">
+                    C
+                </button>
+                <div aria-live="assertive" className="Visually-hidden">
+                    {ariaMessage}
+                </div>
             </div>
 
             <div className="calc-numbers">
-                <div className="row-1">
                     <button className="Button-item" onClick={() => handleClick("7")}>
                         7
                     </button>
@@ -49,8 +48,6 @@ function Calculator() {
                     <button className="Button-item" aria-label="Умножить" onClick={() => handleClick("*")}>
                         x
                     </button>
-                </div>
-                <div className="row-2">
                     <button className="Button-item" onClick={() => handleClick("4")}>
                         4
                     </button>
@@ -63,8 +60,6 @@ function Calculator() {
                     <button className="Button-item" aria-label="Вычесть" onClick={() => handleClick("-")}>
                         -
                     </button>
-                </div>
-                <div className="row-3">
                     <button className="Button-item" onClick={() => handleClick("1")}>
                         1
                     </button>
@@ -77,8 +72,6 @@ function Calculator() {
                     <button className="Button-item" aria-label="Прибавить" onClick={() => handleClick("+")}>
                         +
                     </button>
-                </div>
-                <div className="row-4">
                     <button className="Button-item" aria-label="Минус" onClick={() => handleClick("-")}>
                         +/-
                     </button>
@@ -91,11 +84,8 @@ function Calculator() {
                     <button className="Button-item" aria-label="Равно" onClick={() => handleClick("=")}>
                         =
                     </button>
-                </div>
             </div>
-            <div aria-live="assertive" class="Visually-hidden">
-                {ariaMessage}
-            </div>
+
         </div>
     );
 }

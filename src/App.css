@@ -1,100 +1,96 @@
+:root {
+  --main-color: #00b7b7;
+  --accent-color: #e6fafa;
+  --text-color: #025e5e;
+  --border-color: #c0f0f0;
+  --button-hover: #dffbfb;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5fefe;
+  margin: 0;
+  padding: 0;
+}
+
 #root {
   display: flex;
   justify-content: center;
-}
-.App {
   padding: 2rem;
-  width: 30rem;
-  display: flex;
-  flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.calc-numbers {
+.App {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  padding: 2rem;
   width: 100%;
-}
-.row-1, .row-2, .row-3, .row-4 {
+  max-width: 24rem;
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-.Button-item {
-  flex: 1 1 0;
-  box-sizing: border-box;
-  border: 1px solid #c9f6f6;;
-  font-size: 3rem;
-  background-color: white;
-  font-weight: bold;
-  color: #07c3c3;
-  min-height: 10rem;
-}
-.Button-item:hover {
-  background-color: #d1fdfd;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
+
 .Result {
   display: flex;
+  gap: 0.5rem;
 }
+
 .Result-input {
+  flex: 1;
   width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 2rem;
-  border: 4px dotted #07c3c3;
-  height: 5rem;
-  font-size: 3rem;
-  text-align: end;
-  padding-right: 3.5rem;
-  color: #048f8f;
-  font-weight: bold;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  height: 4rem;
+  font-size: 2rem;
+  border: 2px solid var(--main-color);
+  border-radius: 0.75rem;
+  text-align: right;
+  color: var(--text-color);
+  font-weight: 600;
+  background: var(--accent-color);
+  padding-right: 1rem;
 }
 
 .Button-clear {
-  border: none;
-  background: transparent;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+  border-radius: 0.5rem;
+  color: var(--main-color);
+}
+
+.Button-clear:hover {
+  color: #555;
+}
+
+.calc-numbers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  max-width: 100%;
+}
+
+.Button-item {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: white;
+  color: var(--main-color);
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
   cursor: pointer;
-  font-size: 2.5rem;
-  height: 3rem;
-  position: static;
-  margin-left: -3rem;
-  color: #979797;
-  margin-top: 1rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Button-item:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.03);
 }
 
 .Visually-hidden {
@@ -104,9 +100,22 @@ input::-webkit-inner-spin-button {
   margin: -1px;
   border: 0;
   padding: 0;
-
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+@media (max-width: 480px) {
+  .App {
+    padding: 1rem;
+  }
+
+  .Result-input {
+    font-size: 1.5rem;
+    height: 3.5rem;
+  }
+
+  .Button-item {
+    font-size: 1.25rem;
+  }
 }
